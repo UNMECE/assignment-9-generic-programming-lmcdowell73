@@ -2,20 +2,19 @@
 
 using namespace std;
 
-template <typename DataType>
+template <typename Type>
 class GenericArray{
 private:
-DataType val;
-
+Type *array;
+int array_size;
 public:
-value(){}
-value(DataType n_v) { val = n_v;}
 
-void addElement(DataType n_v) {val = n_v;}
 
-DataType at() {return val;}
+void addElement(Type element){array = element;}
 
-DataType size() {}
+Type at() {return val;}
+
+Type size() {}
 
 
 };

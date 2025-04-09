@@ -6,18 +6,76 @@ template <typename Type>
 class GenericArray{
 private:
 Type *array;
-int array_size;
+int currentsize;
 public:
 
+GenericArray() {
+  array = nullptr;
+  int currentsize = 0;
+}
 
-void addElement(Type element){array = element;}
+~GenericArray(){
+delete[] array;
+}
 
-Type at() {return val;}
+void addElement(Type element){
+  Type *newElement = new Type[currentsize + 1];
+  for(int i = 0; i < currentsize; ++i){
+    newElement[i] = array[i];
+  }
+  newElement[currentsize] = element;
+  delete[] array;
+  array = newElement;
+  ++currentsize;
+}
 
-Type size() {}
+Type at(int index){
+  return array[index];
+} 
 
+Type size() const{
+  return currentsize;
+}
+
+Type sum()const{
+  Type total = Type();
+  for(int i =0;i < currentsize; ++i){
+    total += array[i];
+  }
+  return total;
+}
+
+Type max()const{
+  Type maxElement = array[0];
+  for(int i = 1; i < size; ++i){
+    if(array[i] > maxElement){
+      maxElement = array[i];
+    }
+  }
+  return maxElement;
+}
+
+Type min() const{
+  Type minElement = array[0];
+  for(int i = 1; i < currentsize; ++i){
+    if(array[i] > minElement){
+      minElement = array[i];
+    }
+  }
+  return minElement;
+}
+
+Type slice(int begin, int end)const{
+  int newSize = end - begin + 1;
+  Type newArray = new Type[newSize];
+  for(int i=0; i < newSize; ++i){
+    newArray[i] = array[begin + i];
+  }
+  return newArray;
+}
 
 };
+
 
 
 

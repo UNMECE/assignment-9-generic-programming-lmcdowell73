@@ -75,15 +75,6 @@ Type* slice(int begin, int end)const{
 }
 };
 
-
-
-
-
-
-
-
-
-
 int main()
 {
   GenericArray<int> int_array;
